@@ -102,14 +102,6 @@ python main.py
 
 Po uruchomieniu otworzy się okno z wykresami na żywo. W terminalu będą wyświetlane poziomy relaksacji i koncentracji.
 
-## Cursor Rules
-
-Plik `.cursor-rules.json` zawiera zasady i wytyczne dla środowiska Cursor IDE, które pomogą Ci w utrzymaniu spójności kodu i przestrzeganiu najlepszych praktyk podczas pracy nad projektem. Obejmują one:
-
-*   **Strukturę projektu i moduły**: Gdzie umieszczać kod związany z poszczególnymi funkcjonalnościami.
-*   **Standardy kodowania**: Przestrzeganie PEP 8, używanie docstringów, type hints.
-*   **Użycie biblioteki Brainflow**: Specyficzne wytyczne dotyczące inicjalizacji, filtrowania i analizy danych.
-
 ## Szczegółowy Plan Realizacji (Checklist)
 
 Plik `project_checklist.md` zawiera bardzo szczegółowy, krokowy plan implementacji projektu. Jest on podzielony na fazy:

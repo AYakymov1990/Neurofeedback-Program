@@ -21,3 +21,7 @@ class EEGGenerator:
         self.board.release_session()
 
 
+
+
+
+

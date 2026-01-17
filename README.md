@@ -116,6 +116,23 @@ Plik `project_checklist.md` zawiera bardzo szczegółowy, krokowy plan implement
 
 Każdy krok jest opisany szczegółowo z przykładami kodu, co pozwala na stopniową implementację projektu.
 
+## Wersja web (Flask + Chart.js)
+
+Dodano prosty serwer Flask (`app.py`) z interfejsem w `templates/index.html`, który pozwala przeglądać zapisane pliki EEG:
+
+- Umieść plik CSV z danymi w `data/eeg_data.csv` (możesz wskazać inną ścieżkę zmienną środowiskową `EEG_FILE`). Kolumny traktowane są jako kanały EEG; pola `time`/`timestamp` są opcjonalne do wyliczenia osi czasu.
+- Uruchom: `python app.py` (potrzebny pakiet `flask` w `requirements.txt`).
+- Otwórz `http://localhost:5000/`. Wybierz kanał, ustaw przedział próbek (start/end) i przełącznik filtra. Filtrowanie korzysta z logiki `signal_processor.py` (notch 60 Hz + pasmo alfa 8–13 Hz); gdy BrainFlow jest niedostępny, serwer użyje prostego wygładzania.
+- Jeśli plik nie zostanie znaleziony, serwer załaduje syntetyczne dane, aby UI pozostało interaktywne (baner na stronie poinformuje o tym).
+
+### Akcenty HCI (dla użytkownika: badacz / student EEG)
+
+- Jasne etykiety: wybór kanału i zakres próbek pozostają widoczne obok wykresu, bez przeładowań strony.
+- Przełącznik „Filtr” opisuje konkretnie co robi (notch 60 Hz + pasmo 8–13 Hz), by użytkownik wiedział, czego się spodziewać.
+- Zakres czasu to wartości indeksowe; w statusie po każdym zapytaniu widnieją aktualne próbki, co ułatwia nawigację po pliku.
+- Komunikaty błędów pojawiają się pod wykresem, aby nie zasłaniać danych, a baner źródła danych wskazuje, czy używany jest plik czy syntetyka.
+- Jeśli filtr wygładzi sygnał „do zera”, podpowiedź sugeruje skrócenie okna lub sprawdzenie dostępności BrainFlow.
+
 ## Możliwości Rozbudowy
 
 Po zrealizowaniu podstawowej wersji projektu, możesz rozważyć następujące rozszerzenia:
@@ -143,3 +160,4 @@ Po zrealizowaniu podstawowej wersji projektu, możesz rozważyć następujące r
 *   **YAKYMOV OLEKSANDR**
     *   Nr albumu: 159004
     *   Grupa D2
+
